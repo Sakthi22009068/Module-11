@@ -26,8 +26,59 @@ To write a Python program to search for a given element in a singly linked list 
 ---
 
 ## 💻 Program
-Add Code Here
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def push(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def search(self, key):
+        temp = self.head
+        while temp:
+            if temp.data == key:
+                return True
+            temp = temp.next
+        return False
+
+ll = LinkedList()
+
+elements = [10, 30, 11, 21, 14]
+for ele in elements:
+    ll.push(ele)
+
+key = int(input("Enter element to search: "))
+
+if ll.search(key):
+    print("Yes")
+else:
+    print("No")
+
 ## Sample Output
+Enter element to search: 21
+
+Yes
+
+Enter element to search: 50
+
+No
 
 ## Result
+The program successfully:
 
+Creates a Singly Linked List
+
+Inserts elements using push() (at beginning)
+
+Searches for a given element efficiently
+
+Displays "Yes" if found, otherwise "No"
