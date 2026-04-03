@@ -34,9 +34,91 @@ To write a Python program that:
 ---
 
 ## 💻 Program
-Add Code here
+
+class Nodeq:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insert at beginning
+    def insert_beginning(self, data):
+        new_node = Nodeq(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            self.head.prev = new_node
+            new_node.next = self.head
+            self.head = new_node
+
+    def insert_end(self, data):
+        new_node = Nodeq(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            temp = self.head
+            while temp.next:
+                temp = temp.next
+            temp.next = new_node
+            new_node.prev = temp
+
+    def search(self, key):
+        temp = self.head
+        position = 1
+        while temp:
+            if temp.data == key:
+                return position
+            temp = temp.next
+            position += 1
+        return -1
+
+    def display(self):
+        temp = self.head
+        while temp:
+            print(temp.data, end=" <-> ")
+            temp = temp.next
+        print("None")
+
+dll = DoublyLinkedList()
+
+
+dll.insert_beginning(30)
+dll.insert_beginning(10)
+dll.insert_end(50)
+dll.insert_end(70)
+
+
+print("Doubly Linked List:")
+dll.display()
+
+key = int(input("\nEnter element to search: "))
+pos = dll.search(key)
+
+if pos != -1:
+    print(f"Element {key} found at position {pos}")
+else:
+    print(f"Element {key} not found in the list")
 
 ## Sample Output
+Doubly Linked List:
 
+10 <-> 30 <-> 50 <-> 70 <-> None
+
+Enter element to search: 50
+
+Element 50 found at position 3
 ## Result
+The program successfully:
+
+Implements a Doubly Linked List
+
+Inserts elements at both beginning and end
+
+Searches for a given element
+Displays the position if found, otherwise shows not found
 
